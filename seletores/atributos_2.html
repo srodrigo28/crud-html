@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abributos</title>
+</head>
+<body>
+    <main>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino="escritorio" data-urgencia="5">
+            <li>Café</li>
+            <li>Agua</li>
+            <li>Compo descartável</li>
+        </ul>
+    </main>
+    <script>
+        const lista = document.querySelector('main ul[destino="escritorio"]')
+        console.log('childNodes', lista.childNodes)
+        console.log('destino #1', lista.destino)
+        console.log('destino #2', lista.getAttribute('destino'))
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+
+        lista.setAttribute('destino', 'empresa')
+        lista.setAttribute('status', 'aberto')
+        lista.remove('destino')
+
+        lista.dataset.urgencia = 9
+
+        console.log(lista.dataset.urgencia)
+
+        const label = document.querySelector('label')
+        console.log('for #1', label.htmlFor)
+        console.log('for #2', label.getAttribute('for'))
+    </script>
+</body>
+</html>

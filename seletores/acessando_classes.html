@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessando classes</title>
+</head>
+<body>
+    <div>
+        classes
+    </div>
+    <button>Toggle</button>
+
+    <div id="mostrar"></div>
+    <style>
+        body{
+            color: white;
+            background-color: #1d1d1d;
+        }
+        .btn-primary{
+            padding: 10px 20px;
+            width: 100px;
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            border: 5px dotted green;
+            background-color: black;
+        }
+        #mostrar{
+            margin: 10px;
+            width: 120px;
+            height: 100px;
+            padding: 40px;
+            
+            font-size: 1.5rem;
+            background-color: green;
+        }
+    </style>
+    <script>
+        const mostrar = document.querySelector("#mostrar")
+        const div = document.querySelector('div')
+        const btnToggle = document.querySelector('button')
+        const classes = div.classList
+
+        console.log(mostrar)
+
+        classes.add('btn-primary')
+        classes.add('roundend')
+        classes.add('showModal')
+        classes.add('flex-wrap')
+        classes.remove('btn-primary')
+
+        btnToggle.onclick = function() {
+            classes.toggle('btn-primary')
+        }
+
+        console.log(classes.length)
+
+        for(let classe of classes){
+            console.log(classes)
+            mostrar.textContent = classes
+        }
+
+        classes.forEach( (c, i) => console.log(i, c ) )
+
+        let classeNew = [...classes]
+        classeNew.push('add')
+        classeNew.sort()
+        console.log(classeNew, classeNew.length)
+        console.log(classeNew['0'])
+
+    </script>
+</body>
+</html>
