@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listagem de Usuários</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f4f4f4;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    http://localhost:3000/login
+  <h1>Lista de Usuários</h1>
+  <ul id="user-list">
+    <!-- A lista será preenchida dinamicamente -->
+  </ul>
+
+  <script>
+    // URL do json-server
+    const apiUrl = 'http://localhost:3000/login';
+
+    // Seleciona o elemento da lista no HTML
+    const userList = document.getElementById('user-list');
+
+    // Faz a requisição GET para obter os dados
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) { throw new Error(`Erro na requisição: ${response.status}`); }
+        return response.json(); // Retorna os dados em formato JSON
+      })
+      .then(users => {
+        // Itera sobre os usuários e cria os elementos de lista
+        users.forEach(user => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${user.nome} - ${user.email} - ${user.senha}`;
+          userList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Erro ao buscar os usuários:', error);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Cadastro de Usuário</h1>
+  <form id="user-form">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" placeholder="Digite seu nome" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Digite seu email" required>
+
+    <label for="senha">senha:</label>
+    <input type="password" id="senha" placeholder="Digite seu senha" required>
+
+    <label for="senha_confirme">Confirme:</label>
+    <input type="password" id="senha_confirme" placeholder="Digite seu senha" required>
+    
+    <button type="submit">Cadastrar</button>
+    <p class="message" id="message"></p>
+  </form>
+
+  <script>
+    // URL do json-server
+    const apiUrl = 'http://localhost:3000/login';
+
+    // Seleciona o formulário e o elemento de mensagem
+    const form = document.getElementById('user-form');
+    const messageElement = document.getElementById('message');
+
+    // Adiciona um evento de envio ao formulário
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      // Obtém os valores dos campos do formulário
+      const name  = document.querySelector('#nome').value;
+      const email = document.querySelector('#email').value;
+      const senh  = document.querySelector('#senha').value;
+
+      // Dados a serem enviados no corpo da requisição
+      const userData = {
+        nome: nome,
+        email: email,
+        senha: senha
+      };
+
+      // Faz a requisição POST com Fetch API
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Erro na requisição: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Exibe uma mensagem de sucesso
+        messageElement.textContent = 'Usuário cadastrado com sucesso!';
+        messageElement.style.color = 'green';
+        // Limpa o formulário
+        form.reset();
+      })
+      .catch(error => {
+        // Exibe uma mensagem de erro
+        messageElement.textContent = 'Erro ao cadastrar usuário.';
+        messageElement.style.color = 'red';
+        console.error('Erro:', error);
+      });
+    });
+  </script>
+</body>
+</html>
