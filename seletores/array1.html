@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>#01</div>
+    <div>#02</div>
+    <div>#03</div>
+    <div>#04</div>
+    <div>#05</div>
+    <p class="destaque">#06</p>
+</body>
+
+<style>
+    .destaque{
+        width: 30px;
+        margin: 10px;
+        padding: 10px;
+        border: 5px solid red;
+    }
+</style>
+
+<script>
+    var p = document.querySelector("p")
+    var divs1 = document.querySelectorAll("div")
+
+    // HTMLCollection ( não é um array! )
+    var divs2 = document.getElementsByClassName("div")
+
+    console.log( divs1 )
+    console.log( divs2 )
+    console.log("divs1: ", typeof divs1 )
+    console.log("divs2: ", typeof divs2 )
+
+    // fazendo interação sobre o nodeList 1
+    for(var elemento of divs1){
+        elemento.classList.add('destaque')
+    }
+    
+    // transformando em array 1
+    // var array1 = Array.from(divs1)
+    var array1 = [...divs1]
+    console.log(array1)
+    
+    // fazendo interação sobre o array 1
+    array1.forEach((el, i) => {
+        // el.classList.remove('destaque')
+        el.style.backgroundColor = "yellow"
+    })
+
+    // fazendo interação sobre o array 2
+    array1.forEach( (el, i) => {
+        if( i % 2 === 1){
+             el.style.backgroundColor = "transparent"
+        }
+    })
+
+    // fazendo interação sobre o array 3
+    array1.forEach( (el, i) => {
+        const primeiro = array1.length[0] === i
+        const ultimo = array1.length -1 === i
+        if(ultimo){
+            el.style.color = "#fff"
+            el.style.borderRadius = "50%"
+            el.style.backgroundColor = "green"
+        } 
+        if(primeiro){
+            el.style.color = "#fff"
+            el.style.borderRadius = "50%"
+            el.style.backgroundColor = "green"
+        } 
+    })
+    
+    // transformando em array 2
+    console.log(typeof divs2)
+
+    
+
+</script>
+</html>

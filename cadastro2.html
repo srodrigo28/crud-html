@@ -21,7 +21,6 @@
     <input type="password" id="senha" placeholder="Digite seu senha" required>
     
     <button type="submit">Cadastrar</button>
-    <p class="message" id="message"></p>
   </form>
 
   <script>
@@ -30,7 +29,6 @@
 
     // Seleciona o formulário e o elemento de mensagem
     const form = document.getElementById('user-form');
-    const messageElement = document.getElementById('message');
 
     // Adiciona um evento de envio ao formulário
     form.addEventListener('submit', (event) => {
@@ -41,43 +39,23 @@
       const email = document.querySelector('#email').value;
       const senha  = document.querySelector('#senha').value;
 
-
       // Dados a serem enviados no corpo da requisição
       const userData = {
-        nome: nome,
-        email: email,
-        senha: senha
+        nome: nome, email: email, senha: senha
       };
 
       // Faz a requisição POST com Fetch API
       fetch(apiUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(userData)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.statusText}`);
-        }
-        return response.json();
       })
       .then(data => {
         // Exibe uma mensagem de sucesso
-        messageElement.textContent = 'Usuário cadastrado com sucesso!';
-        messageElement.style.color = 'green';
-
         alert("Cadastrado com sucesso")
+        
         // Limpa o formulário
         form.reset();
       })
-      .catch(error => {
-        // Exibe uma mensagem de erro
-        messageElement.textContent = 'Erro ao cadastrar usuário.';
-        messageElement.style.color = 'red';
-        console.error('Erro:', error);
-      });
     });
   </script>
 </body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 2</title>
+</head>
+<body>
+    <div id="primeiro">#01</div>
+    <div id="segundo" >#02</div>
+    <div id="terceiro" class="destaque">#03</div>
+    <div id="quarto"  >#04</div>
+    <div id="quinto"  class="destaque">#05</div>
+    <p class="destaque ultimo">#06</p>
+</body>
+
+<style>
+    .destaque{
+        width: 30px;
+        margin: 10px;
+        padding: 10px;
+        border: 5px solid red;
+    }
+</style>
+<script>
+    // html colletion
+    var destaque = document.getElementsByClassName('destaque')
+    destaque[2].classList.remove('destaque')
+    console.log(destaque)
+
+    var ultimo = document.getElementsByClassName('ultimo')
+    ultimo[0].classList.add('destaque')
+    ultimo[0].style.color = "#fff"
+    ultimo[0].style.fontSize = "20px"
+    ultimo[0].style.padding = "20px"
+
+    ultimo[0].style.background = "green"
+</script>
+</html>

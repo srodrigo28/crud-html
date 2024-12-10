@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query 1</title>
+</head>
+<body id="exercicio">
+    <h1>Query 1</h1>
+
+    <input type="text" nome value="rodrigo">
+    <input type="text" data="email" value="email@gmail.com">
+    <div id="primeiro" >#primeiro</div>
+    <div id="segundo"  >#segundo</div>
+    <div id="terceiro" >#terceiro</div>
+    <div id="quarto"   >#quarto  </div>
+    <div id="quinto"   >#quinto  </div>
+</body>
+
+<style>
+
+</style>
+<script>
+    
+    // const primeiro = document.getElementById('primeiro')
+    // const primeiro = document.querySelector('#primeiro')
+    // const primeiro = document.querySelector('#exercicio #primeiro')
+
+    function selecionar(seletor){
+        const elemento = document.querySelector(seletor)
+        console.log(elemento)
+    }
+
+    console.log(document.querySelector('[nome]'))
+    console.log(document.querySelector('[data="email"]'))
+    selecionar('#primeiro')
+    // console.log(primeiro)
+    
+</script>
+</html>

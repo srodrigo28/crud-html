@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query 3</title>
+</head>
+<body id="exercicio">
+    <h1>Query 3</h1>
+
+    <main id="main">
+        <section>
+            <p>Lista de Aprovados</p>
+
+            <ul>
+                <li>Ana</li>
+                <li>Rafaela</li>
+                <li>Giulia</li>
+                <li>Pamela</li>
+            </ul>
+
+            <p>Lista de Reprovados...</p>
+            <ul>
+                <li>Alex</li>
+                <li>Carlos</li>
+                <li>Davi</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+<script>
+    // var lista1 = document.querySelectorAll(" main section ul li  ")
+    // var lista2 = document.querySelectorAll(" li  ")
+    var lista1 = document.querySelectorAll(" main section ul li  ")
+    var lista2 = document.querySelectorAll(" li:nth-child(1)  ")
+    
+    console.log(lista1)
+    console.log(lista2)
+
+    const ultimoNome = lista2[lista2.length -1].textContent
+    console.log(" \n último: "  + ultimoNome + '\n \n')
+
+    lista1.forEach( item => 
+        console.log(item.textContent)
+    )
+    console.log('--------------------------------------------')
+    console.log(ultimoNome.parentNode)
+
+</script>
+</html>

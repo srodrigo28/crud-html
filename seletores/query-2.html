@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query 2</title>
+</head>
+<body id="exercicio">
+    <h1>Query 2</h1>
+
+    <div id="primeiro" >#primeiro</div>
+    <div id="segundo"  class="destaque">#segundo</div>
+    <div id="terceiro" >#terceiro</div>
+    <div id="quarto"   class="destaque">#quarto  </div>
+    <div id="quinto"   >#quinto  </div>
+</body>
+
+<style>
+    div{
+        padding: 10px;
+    }
+    .destaque{
+        background-color: yellow;
+    }
+</style>
+<script>
+    // NodeList
+    // var lista = document.querySelectorAll('.destaque')
+    // console.log(lista)
+
+    function selecionarTodos(seletor){
+        return document.querySelectorAll(seletor)
+    }
+    // NodeList
+    console.log(selecionarTodos('.destaque'))
+    console.log(selecionarTodos('.destaque').length)
+    console.log(selecionarTodos('.destaque').item(0))
+
+    // verificando tamanho
+    // console.log("Tamanho: " + selecionarTodos('div').length)
+
+    // Interação forEach
+    /*
+    selecionarTodos('.destaque').forEach( el => {
+        console.log(el instanceof Node)
+        console.log(el.nodeName)
+        console.log(el.textContent)
+    })
+    */
+</script>
+</html>
