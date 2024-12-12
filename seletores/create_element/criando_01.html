@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificador #01</title>
+</head>
+<body id="modifcar_01">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            background-color: green;
+            border: 4px solid #fff;
+            letter-spacing: 2px;
+            margin: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-black{
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+    
+    <script>
+        // var body = document.querySelector("body")
+        var body = document.querySelector("#modifcar_01")
+
+        var div1 = document.createElement('div')
+        div1.innerHTML = "primeiro"
+        // div1.classList.add("text-black")
+
+        var p1 = document.createElement('p')
+        p1.innerHTML = "Oi"
+
+        var div2 = document.createElement('div')
+        div2.appendChild(p1)
+
+        div2.classList.add("text-black")
+        
+        body.appendChild(div1)
+        body.appendChild(div2)
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando #02</title>
+</head>
+<body id="criando_01">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+        }
+        div{
+            width: 100px;
+            height: 50px;
+            color: #fff;
+            background-color: green;
+            border: 4px solid #fff;
+            letter-spacing: 2px;
+            margin: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-black{
+            color: red;
+            font-weight: 900;
+        }
+    </style>
+    
+    <script>
+        var body = document.querySelector("body")
+       
+        var div1 = document.createElement('div')
+        // div1.innerHTML = "oi"
+        
+        body.append(div1)
+        var texto = document.createTextNode('Antes ...')
+        
+        div1.insertBefore(texto, div1.childNodes[0])
+
+        const div2 = div1.cloneNode(true)
+        body.append(div2)
+
+        const div3 = div2.cloneNode(true)
+        body.append(div3)
+
+        body.removeChild(div3)
+
+    </script>
+</body>
+</html>

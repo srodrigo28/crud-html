@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Move - Me !</div>
+
+    <style>
+        body{
+            color: #fff;
+            height: 100vh;
+            background-color: #1d1d1d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div{
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+            background-color: red;
+            user-select: none;
+        }
+    </style>
+
+    <script defer>
+        const div = document.querySelector("div")
+        div.style.position = 'absolute'
+    
+        div.onmousemove = function(evento){
+            const item = evento.target
+            item.style.cursor = 'move'
+            
+            if(evento.buttons){
+                item.style.top = evento.clientY  - (item.clientHeight /2)
+                item.style.left = evento.clientX - (item.clientWidth /2)
+            }
+        }
+    </script>
+</body>
+</html>

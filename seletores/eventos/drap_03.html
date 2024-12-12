@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag2</title>
+</head>
+<body>
+    <main class="principal">
+        <section class="esquerda" web-dropzone>
+            <div id="1" class="item">1</div>
+            <div id="2" class="item">2</div>
+            <div id="3" class="item">3</div>
+            <div id="4" class="item">4</div>
+        </section>
+
+        <section class="direita"  web-dropzone>
+
+        </section>
+    </main>
+
+    <style>
+        body{
+            color: #fff;
+            height: 100vh;
+            background-color: #1d1d1d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .esquerda{
+            height: 70vh;
+            width: 50vw;
+            background-color: green;
+        }
+        .item{
+            padding: 10px;
+            width: 100px;
+            margin: 20px;
+            background-color: red;
+        }
+        .direita{
+            height: 70vh;
+            width: 50vw;
+            background-color: blueviolet;
+        }
+    </style>
+
+    <script defer>
+        const items = document.querySelectorAll('[web-dropzone] .item')
+        items.forEach( (item, index) => {
+            item.draggable = true
+            item.id = item.id || `indice-item-${index}`
+            item.ondragstart = function(evento){
+                evento.dataTransfer.setData('itemId', evento.target.id)
+                // alert(evento.target.id)
+            }
+        })
+
+        const dropzones = document.querySelectorAll('[web-dropzone]')
+        dropzones.forEach( dropzone => {
+            dropzone.ondragover = e => e.preventDefault()
+            
+            dropzone.ondrop = function (evento) {
+                const itemId = evento.dataTransfer.getData('itemId')
+                const item = document.getElementById(itemId)
+                // evento.target.appendChild(item)
+                dropzone.appendChild(item)
+            }  
+        })
+    </script>
+</body>
+</html>

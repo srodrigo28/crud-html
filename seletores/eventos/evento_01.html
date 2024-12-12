@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento #01</title>
+</head>
+<body>
+    <div id="resultado">???</div>
+    <div class="group">
+        <button onclick="sim()">Sim</button>
+        <button onclick="nao()">Não</button>
+    </div>
+
+    <script>
+        function sim(){
+            const div = document.querySelector("#resultado")
+            div.textContent = "Sim"
+        }
+
+        function nao(){
+            const div = document.querySelector("#resultado")
+            div.textContent = "Não"
+        }
+    </script>
+</body>
+</html>
